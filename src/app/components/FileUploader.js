@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+// components/FileUploader.js
+import { useState } from 'react';
 
 const FileUploader = ({ onFileUpload }) => {
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const file = event.target.files[0];
+    
     if (file && file.type === 'application/pdf') {
       setSelectedFile(file);
       onFileUpload(file);
@@ -29,7 +31,7 @@ const FileUploader = ({ onFileUpload }) => {
       />
       {selectedFile && (
         <p className="mt-2 text-sm text-green-600">
-          {selectedFile.name} uploaded
+          {selectedFile.name} selected
         </p>
       )}
     </div>
